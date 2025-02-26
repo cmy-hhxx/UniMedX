@@ -216,9 +216,9 @@ class DoubleConv(nn.Module):
 
         se_out = self.se(out)
 
-        # sa_out = self.sa(out)
-        # g = torch.sigmoid(self.attention_gate)
-        # out = g * se_out + (1 - g) * sa_out
+        sa_out = self.sa(out)
+        g = torch.sigmoid(self.attention_gate)
+        out = g * se_out + (1 - g) * sa_out
 
         out += identity
         out = self.relu(out)
